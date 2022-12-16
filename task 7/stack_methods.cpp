@@ -73,13 +73,6 @@ list& stack::operator = (const list& a)
     return *this;
 }
 
-void stack::print(std::ostream& stream) const
-{
-    for (const_iterator it = (*this).cbegin(); it != (*this).cend(); ++it)
-    {
-        stream << *it << " ";
-    }
-}
 
 stack& stack::operator = (const stack& a)
 {

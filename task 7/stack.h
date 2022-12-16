@@ -46,8 +46,9 @@ public:
     const_iterator cbegin() const override { return const_iterator(top); };
     const_iterator cend() const override { return const_iterator(); };
 
-protected:
-    void print(std::ostream& stream) const override;
+    const_iterator begin() const override { return const_iterator(top); };
+    const_iterator end() const override { return const_iterator(); };
+
 private:
     node* top;
 };

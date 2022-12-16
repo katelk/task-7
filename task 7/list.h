@@ -22,9 +22,13 @@ public:
     virtual size_t size() const = 0;
     virtual list& operator = (const list& a) = 0;
     virtual void free() = 0;
+
     friend std::ostream& operator <<(std::ostream& stream, list& a)
     {
-        a.print(stream);
+        for (const_iterator it = a.cbegin(); it != a.cend(); it++)
+        {
+            stream << *it << " ";
+        }
         return stream;
     }
     friend std::istream& operator >> (std::istream& in, list& a)
@@ -35,6 +39,7 @@ public:
         return in;
     }
 
+    class const_iterator;
     class iterator
     {
     public:
@@ -62,6 +67,15 @@ public:
         }
 
         bool operator==(const iterator& other) const {
+            return curr_node == other.curr_node;
+        }
+        friend const_iterator;
+
+        bool operator != (const const_iterator& other) const {
+            return curr_node != other.curr_node;
+        }
+
+        bool operator==(const const_iterator& other) const {
             return curr_node == other.curr_node;
         }
 
@@ -101,6 +115,15 @@ public:
             return curr_node == other.curr_node;
         }
 
+        bool operator != (const iterator& other) const {
+            return curr_node != other.curr_node;
+        }
+
+        bool operator==(const iterator& other) const {
+            return curr_node == other.curr_node;
+        }
+        friend iterator;
+
     private:
         const node* curr_node;
     };
@@ -108,8 +131,9 @@ public:
     virtual const_iterator cbegin() const = 0;
     virtual const_iterator cend() const = 0;
 
-protected:
-    virtual void print(std::ostream& stream) const = 0;
+    virtual const_iterator begin() const = 0;
+    virtual const_iterator end() const = 0;
+
 };
 
 #endif // LIST_H_INCLUDED

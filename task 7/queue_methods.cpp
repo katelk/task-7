@@ -74,13 +74,6 @@ list& queue::operator = (const list& a)
     return *this;
 }
 
-void queue::print(std::ostream& stream) const
-{
-    for (const_iterator it = (*this).cbegin(); it != (*this).cend(); it++)
-    {
-        stream << *it << " ";
-    }
-}
 
 queue& queue::operator = (const queue& a)
 {
