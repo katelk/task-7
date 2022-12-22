@@ -81,6 +81,7 @@ public:
 
         iterator& operator=(const iterator& other) {
             curr_node = other.curr_node;
+            return *this;
         }
 
     private:
@@ -128,10 +129,12 @@ public:
 
         const_iterator& operator=(const const_iterator& other) {
             curr_node = other.curr_node;
+            return *this;
         }
         
         const_iterator& operator=(const iterator& other) {
             curr_node = other.curr_node;
+            return *this;
         }
 
     private:
