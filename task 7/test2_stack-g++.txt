@@ -1,0 +1,40 @@
+In file included from stack.h:4,
+                 from test2_stack.cpp:4:
+list.h: В функции-члене «List::iterator& List::iterator::operator=(const List::iterator&)»:
+list.h:84:9: предупреждение: в функции, которая должна возвращать значение, отсутствует оператор return [-Wreturn-type]
+   83 |             curr_node = other.curr_node;
+  +++ |+            return *this;
+   84 |         }
+      |         ^
+list.h: В функции-члене «List::const_iterator& List::const_iterator::operator=(const List::const_iterator&)»:
+list.h:131:9: предупреждение: в функции, которая должна возвращать значение, отсутствует оператор return [-Wreturn-type]
+  130 |             curr_node = other.curr_node;
+  +++ |+            return *this;
+  131 |         }
+      |         ^
+list.h: В функции-члене «List::const_iterator& List::const_iterator::operator=(const List::iterator&)»:
+list.h:135:9: предупреждение: в функции, которая должна возвращать значение, отсутствует оператор return [-Wreturn-type]
+  134 |             curr_node = other.curr_node;
+  +++ |+            return *this;
+  135 |         }
+      |         ^
+In file included from stack.h:4,
+                 from stack_methods.cpp:1:
+list.h: В функции-члене «List::iterator& List::iterator::operator=(const List::iterator&)»:
+list.h:84:9: предупреждение: в функции, которая должна возвращать значение, отсутствует оператор return [-Wreturn-type]
+   83 |             curr_node = other.curr_node;
+  +++ |+            return *this;
+   84 |         }
+      |         ^
+list.h: В функции-члене «List::const_iterator& List::const_iterator::operator=(const List::const_iterator&)»:
+list.h:131:9: предупреждение: в функции, которая должна возвращать значение, отсутствует оператор return [-Wreturn-type]
+  130 |             curr_node = other.curr_node;
+  +++ |+            return *this;
+  131 |         }
+      |         ^
+list.h: В функции-члене «List::const_iterator& List::const_iterator::operator=(const List::iterator&)»:
+list.h:135:9: предупреждение: в функции, которая должна возвращать значение, отсутствует оператор return [-Wreturn-type]
+  134 |             curr_node = other.curr_node;
+  +++ |+            return *this;
+  135 |         }
+      |         ^
