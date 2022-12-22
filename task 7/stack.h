@@ -3,20 +3,20 @@
 
 #include "list.h"
 
-class stack : public list
+class Stack : public List
 {
 public:
 
     // конструктор пустого списка
-    stack() : top(nullptr) {};
+    Stack() : top(nullptr) {};
 
     // конструктор копирования
-    stack(const stack& a);
+    Stack(const Stack& a);
 
     // конструктор перемещения
-    stack(stack&& a) : top(a.top) { a.top = nullptr; };
+    Stack(Stack&& a) : top(a.top) { a.top = nullptr; };
 
-    ~stack() { while (top != nullptr) (*this).pop(); }
+    ~Stack() { while (top != nullptr) (*this).pop(); }
 
     void free() override { while (top) (*this).pop(); }
 
@@ -34,20 +34,20 @@ public:
 
     size_t size() const override;
 
-    list& operator = (const list& a);
+    List& operator = (const List& a);
 
-    stack& operator = (const stack& a);
+    Stack& operator = (const Stack& a);
 
-    stack& operator = (stack&& a);
-
-    iterator begin() override { return iterator(top); };
-    iterator end() override { return iterator(); };
+    Stack& operator = (Stack&& a);
 
     const_iterator cbegin() const override { return const_iterator(top); };
     const_iterator cend() const override { return const_iterator(); };
 
     const_iterator begin() const override { return const_iterator(top); };
     const_iterator end() const override { return const_iterator(); };
+
+    iterator begin() override { return iterator(top); };
+    iterator end() override { return iterator(); };
 
 private:
     node* top;

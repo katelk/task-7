@@ -1,5 +1,5 @@
 #include "queue.h"
-queue::queue(const queue& a) : head(nullptr), tail(nullptr)
+Queue::Queue(const Queue& a) : head(nullptr), tail(nullptr)
 {
     node* t = a.head;
 
@@ -15,7 +15,7 @@ queue::queue(const queue& a) : head(nullptr), tail(nullptr)
     }
 }
 
-void queue::push(int e)
+void Queue::push(int e)
 {
     node* n = new node;
     n->data = e;
@@ -25,7 +25,7 @@ void queue::push(int e)
     tail = n;
 }
 
-int queue::pop()
+int Queue::pop()
 {
     node* t = head;
     if (t == nullptr) throw STACK_UNDERFLOW;
@@ -39,7 +39,7 @@ int queue::pop()
     return e;
 }
 
-size_t queue::size() const
+size_t Queue::size() const
 {
     size_t n = 0;
     node* t = head;
@@ -53,10 +53,10 @@ size_t queue::size() const
     return n;
 }
 
-list& queue::operator = (const list& a)
+List& Queue::operator = (const List& a)
 {
     if (this == &a) return *this;
-    const queue& a2 = dynamic_cast<const queue&>(a);
+    const Queue& a2 = dynamic_cast<const Queue&>(a);
 
     node* t = a2.head;
 
@@ -75,7 +75,7 @@ list& queue::operator = (const list& a)
 }
 
 
-queue& queue::operator = (const queue& a)
+Queue& Queue::operator = (const Queue& a)
 {
     if (this == &a) return *this;
 
@@ -90,7 +90,7 @@ queue& queue::operator = (const queue& a)
     return *this;
 }
 
-queue& queue::operator = (queue&& a)
+Queue& Queue::operator = (Queue&& a)
 {
     this->free();
     delete head;

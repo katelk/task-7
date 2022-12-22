@@ -12,7 +12,7 @@ struct node
     struct node* next;
 };
 
-class list
+class List
 {
 public:
     virtual void push(int e) = 0;
@@ -20,10 +20,10 @@ public:
     virtual const int& getFront() const = 0;
     virtual int isEmpty() const = 0;
     virtual size_t size() const = 0;
-    virtual list& operator = (const list& a) = 0;
+    virtual List& operator = (const List& a) = 0;
     virtual void free() = 0;
 
-    friend std::ostream& operator <<(std::ostream& stream, list& a)
+    friend std::ostream& operator <<(std::ostream& stream, List& a)
     {
         for (const_iterator it = a.cbegin(); it != a.cend(); it++)
         {
@@ -31,7 +31,7 @@ public:
         }
         return stream;
     }
-    friend std::istream& operator >> (std::istream& in, list& a)
+    friend std::istream& operator >> (std::istream& in, List& a)
     {
         int e;
         in >> e;
@@ -47,7 +47,7 @@ public:
 
         iterator(node* curr_node = nullptr) : curr_node(curr_node) {}
 
-        int operator*() const { return curr_node->data; }
+        int& operator*() const { return curr_node->data; }
         int& operator -> () { return curr_node->data; }
 
         iterator& operator++() {
@@ -79,12 +79,13 @@ public:
             return curr_node == other.curr_node;
         }
 
+        iterator& operator=(const iterator& other) {
+            curr_node = other.curr_node;
+        }
+
     private:
         node* curr_node;
     };
-
-    virtual iterator begin() = 0;
-    virtual iterator end() = 0;
 
     class const_iterator {
     public:
@@ -92,8 +93,10 @@ public:
 
         const_iterator(const node* curr_node = nullptr) : curr_node(curr_node) {}
 
-        int operator*() const { return curr_node->data; }
+        const int& operator*() const { return curr_node->data; }
         const int& operator -> () { return curr_node->data; }
+
+        friend iterator;
 
         const_iterator& operator++() {
             curr_node = curr_node->next;
@@ -122,7 +125,14 @@ public:
         bool operator==(const iterator& other) const {
             return curr_node == other.curr_node;
         }
-        friend iterator;
+
+        const_iterator& operator=(const const_iterator& other) {
+            curr_node = other.curr_node;
+        }
+        
+        const_iterator& operator=(const iterator& other) {
+            curr_node = other.curr_node;
+        }
 
     private:
         const node* curr_node;
@@ -133,6 +143,9 @@ public:
 
     virtual const_iterator begin() const = 0;
     virtual const_iterator end() const = 0;
+
+    virtual iterator begin() = 0;
+    virtual iterator end() = 0;
 
 };
 

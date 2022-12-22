@@ -1,6 +1,6 @@
 #include "stack.h"
 
-stack::stack(const stack& a) : top(new node)
+Stack::Stack(const Stack& a) : top(new node)
 {
     node* t = a.top;
     node** n = &top;
@@ -16,7 +16,7 @@ stack::stack(const stack& a) : top(new node)
     }
 }
 
-void stack::push(int e)
+void Stack::push(int e)
 {
     node* t = new node;
 
@@ -25,7 +25,7 @@ void stack::push(int e)
     top = t;
 }
 
-int stack::pop()
+int Stack::pop()
 {
     if (!top) throw STACK_UNDERFLOW;
 
@@ -38,7 +38,7 @@ int stack::pop()
     return e;
 }
 
-size_t stack::size() const
+size_t Stack::size() const
 {
     size_t n = 0;
     node* t = top;
@@ -51,10 +51,10 @@ size_t stack::size() const
     return n;
 }
 
-list& stack::operator = (const list& a)
+List& Stack::operator = (const List& a)
 {
     if (this == &a) return *this;
-    const stack& a2 = dynamic_cast<const stack&>(a);
+    const Stack& a2 = dynamic_cast<const Stack&>(a);
 
 
     node* t = a2.top;
@@ -74,7 +74,7 @@ list& stack::operator = (const list& a)
 }
 
 
-stack& stack::operator = (const stack& a)
+Stack& Stack::operator = (const Stack& a)
 {
     if (this == &a) return *this;
 
@@ -95,7 +95,7 @@ stack& stack::operator = (const stack& a)
     return *this;
 }
 
-stack& stack::operator = (stack&& a)
+Stack& Stack::operator = (Stack&& a)
 {
     this->free();
     delete top;

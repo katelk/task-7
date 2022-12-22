@@ -3,24 +3,24 @@
 
 #include "list.h"
 
-class queue : public list
+class Queue : public List
 {
 public:
 
     // конструктор пустого списка
-    queue() : head(nullptr), tail(nullptr) {};
+    Queue() : head(nullptr), tail(nullptr) {};
 
     // конструктор копирования
-    queue(const queue& a);
+    Queue(const Queue& a);
 
     // конструктор перемещения
-    queue(queue&& a) : head(a.head), tail(a.tail)
+    Queue(Queue&& a) : head(a.head), tail(a.tail)
     {
         a.head = nullptr;
         a.tail = nullptr;
     };
 
-    ~queue() { while (head != nullptr) (*this).pop(); }
+    ~Queue() { while (head != nullptr) (*this).pop(); }
 
     void free() override { while (head) (*this).pop(); }
 
@@ -38,11 +38,11 @@ public:
 
     size_t size() const override;
 
-    list& operator = (const list& a);
+    List& operator = (const List& a);
 
-    queue& operator = (const queue& a);
+    Queue& operator = (const Queue& a);
 
-    queue& operator = (queue&& a);
+    Queue& operator = (Queue&& a);
 
     iterator begin() override { return iterator(head); };
     iterator end() override { return iterator(); };
