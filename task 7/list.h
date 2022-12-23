@@ -23,7 +23,7 @@ public:
     virtual List& operator = (const List& a) = 0;
     virtual void free() = 0;
 
-    friend std::ostream& operator <<(std::ostream& stream, List& a)
+    friend std::ostream& operator <<(std::ostream& stream, const List& a)
     {
         for (const_iterator it = a.cbegin(); it != a.cend(); it++)
         {
