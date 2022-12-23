@@ -13,3 +13,5 @@
 * Сейчас все хорошо, но
 friend std::ostream& operator <<(std::ostream& stream, List& a)
 должно быть const List& a 
+
+* Эта задача зачтена
